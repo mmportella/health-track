@@ -1,9 +1,5 @@
 import java.io.Serializable;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -93,40 +89,19 @@ public class User implements Serializable {
     }
 
     /**
-     * Encrypt the user's password with SHA-256.
-     * Adds the user ID before password to change the hash.
-     * @param userPassword the user's password.
-     * @return the password hash.
-     * @throws NoSuchAlgorithmException No algorithm exception.
+     * Get User Password.
+     * @return user password.
      */
-    private String hashing (String userPassword) throws NoSuchAlgorithmException {
-        Integer id = this.userId;
-        String stringPass = id.toString() + userPassword;
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] hash = digest.digest(stringPass.getBytes(StandardCharsets.UTF_8));
-        return new String(hash, StandardCharsets.UTF_8);
+    public String getUserPassword() {
+        return userPassword;
     }
 
     /**
-     * Authenticate the user login information.
-     * @param userEmail user e-mail.
-     * @param userPassword user password.
-     * @return boolean value (user authenticated or not).
-     * @throws NoSuchAlgorithmException No algorithm exception.
-     */
-    public boolean login(String userEmail, String userPassword) throws NoSuchAlgorithmException {
-        String hashedPass = this.userPassword; // Next versions this will come from database.
-        return userEmail.equals(this.userEmail) && hashing(userPassword).equals(hashedPass);
-    }
-
-    /**
-     * Sets the user password (hash).
-     * Uses hashing() method to encrypt the password with SHA-256.
+     * Sets the user password.
      * @param userPassword User Password.
-     * @throws NoSuchAlgorithmException No algorithm exception.
      */
-    public void setUserPassword(String userPassword) throws NoSuchAlgorithmException {
-        this.userPassword = hashing(userPassword);
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     /**

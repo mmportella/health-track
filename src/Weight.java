@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Class that represents the user's weight and body composition information on a given date.
+ * Class that abstracts the user's weight and body composition information on a given date.
  * A user can record this information once a day and can change or delete it.
  * @author Marcelo Portella
- * @version 1.0
+ * @version 0.1
  */
 public class Weight implements Serializable {
 
@@ -59,14 +59,13 @@ public class Weight implements Serializable {
      * Convert the actual date in milliseconds to sql date.
      */
     public void setWeightDate() {
-        long millis = System.currentTimeMillis();
-        this.weightDate = new Date(millis);
+        this.weightDate = new Date(System.currentTimeMillis());
     }
 
     /**
      * Edit a weight date from a String date.
      * This String need to come in format: yyyy-[m]m-[d]d (optional zeroes of months and days).
-     * @param weightDate String weight date (yyyy-[m]m-[d]d).
+     * @param weightDate Weight date (String "yyyy-mm-dd").
      */
     public void setWeightDate(String weightDate) {
         this.weightDate = Date.valueOf(weightDate);
