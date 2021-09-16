@@ -17,5 +17,5 @@ It's an academic project for Systems Analysis and Development graduation course,
 | [site](https://github.com/mmportella/health-track/tree/master/site) | Project website, developed with HTML5, CSS, JS and Bootstrap. |
 | [doc](https://github.com/mmportella/health-track/tree/master/doc) |            Javadoc documentation and other docs.             |
 | [src](https://github.com/mmportella/health-track/tree/master/src) |                    Java sources (.java).                     |
-| [out]([health-track/out/production/health-track at master · mmportella/health-track (github.com)](https://github.com/mmportella/health-track/tree/master/out/production/health-track)) |                      Java bins (.class)                      |
+| [out](https://github.com/mmportella/health-track/tree/master/out/production/health-track) |                      Java bins (.class)                      |
 
