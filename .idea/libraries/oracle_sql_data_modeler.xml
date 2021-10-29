@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="oracle-sql-data-modeler">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/model/data-model/oracle-sql-data-modeler.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

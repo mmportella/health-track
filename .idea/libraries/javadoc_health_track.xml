@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="javadoc-health-track">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/doc/javadoc-health-track.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
