@@ -1,0 +1,139 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/favicon/favicon-16x16.png">
+    <title>Novo Alimento | Health Track</title>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+		var Msg ='<%=request.getAttribute("erro")%>';
+    	if (Msg != "null") {
+    		function alertName(){
+ 			alert("Erro. Digite apenas números nas calorias (em kcal).");}
+ 		}
+ 	</script>
+
+    <nav role="navigation" class="menu-mobile">
+        <div id="menuToggle">
+
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+                <li><a href="../dashboard">Dashboard</a></li>
+                <li>
+                    <a href="../peso">Pesos</a>
+                </li>
+                <li>
+                    <a href="../pressao">Pressão arterial</a>
+                </li>
+                <li>
+                    <a href="../alimento">Alimentação</a>
+                </li>
+                <li>
+                    <a href="../atividade">Atividades</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="menu">
+
+        <ul>
+            <li><a href="../dashboard">Dashboard</a></li>
+            <li>
+                <a href="../peso">Pesos</a>
+            </li>
+            <li>
+                <a href="../pressao">Pressão arterial</a>
+            </li>
+            <li>
+                <a href="../alimento" class="selected">Alimentação</a>
+            </li>
+            <li>
+                <a href="../atividade">Atividades</a>
+            </li>
+        </ul>
+
+        <button><a href="../login">Sair</a></button>
+    </div>
+
+    <div class="main alimentos">
+
+
+        <div class="header">
+
+            <div class="text">
+
+                <div class="title">Nova Refeição</div>
+
+            </div>
+
+            <div class="foto" onclick="perfil()"></div>
+
+        </div>
+
+        <form class="form" action="adicionar" method="post">
+
+            <div class="item">
+                <label for="categoria">Tipo de refeição</label>
+                <select name="categoria" required>
+
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Café da manhã">Café da manhã</option>
+                    <option value="Lanche leve">Lanche leve</option>
+                    <option value="Almoço">Almoço</option>
+                    <option value="Janta">Janta</option>
+                    <option value="Fruta">Fruta</option>
+
+                </select>
+            </div>
+
+            <div class="item">
+                <label for="calorias">Calorias consumidas (kcal)</label>
+                <input class="input" type="text" maxlength="4" name="kcal" required>
+            </div>
+
+            <div class="item">
+                <label for="descricao">Descrição (opcional)</label>
+                <input class="input" type="text" maxlength="20" name="descricao">
+            </div>
+
+            <div class="item">
+                <label for="data">Data do consumo</label>
+                <input class="input" type="datetime-local" name="data" required>
+            </div>
+
+            <div class="button">
+
+                <button class="primary">Salvar</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
+
+<script type="text/javascript"> window.onload = alertName; </script>
+<script>
+    function perfil() {
+        window.location.href = "${pageContext.request.contextPath}/perfil/perfil.html";
+
+    }
+</script>

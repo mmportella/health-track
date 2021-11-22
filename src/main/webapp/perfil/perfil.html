@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <title>Perfil | Health Track</title>
+</head>
+
+<body>
+
+    <nav role="navigation" class="menu-mobile">
+        <div id="menuToggle">
+
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+                <li><a href="dashboard">Dashboard</a></li>
+                <li>
+                    <a href="peso">Pesos</a>
+                </li>
+                <li>
+                    <a href="pressao">Pressão arterial</a>
+                </li>
+                <li>
+                    <a href="alimento">Alimentação</a>
+                </li>
+                <li>
+                    <a href="atividade">Atividades</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="menu">
+
+        <ul>
+            <li><a href="dashboard">Dashboard</a></li>
+            <li>
+                <a href="peso">Pesos</a>
+            </li>
+            <li>
+                <a href="pressao">Pressão arterial</a>
+            </li>
+            <li>
+                <a href="alimento">Alimentação</a>
+            </li>
+            <li>
+                <a href="atividade">Atividades</a>
+            </li>
+        </ul>
+
+        <button><a href="index.html">Sair</a></button>
+    </div>
+
+    <div class="perfil">
+
+        <div class="header">
+
+            <div class="foto" onclick="perfil()"></div>
+
+        </div>
+
+        <div class="infos">
+
+            <div class="form">
+
+                <div class="item">
+                    <label for="nome" required>Nome completo</label>
+                    <input class="input" type="text" disabled value="Aline Soares">
+                </div>
+
+                <div class="item">
+                    <label for="dataNasc" required>Data de nascimento</label>
+                    <input class="input" type="date" id="dataNasc" disabled value="2002-06-12">
+                </div>
+
+                <div class="item">
+                    <label for="email" required>Email</label>
+                    <input class="input" type="email" disabled value="alinedmsoares@gmail.com">
+                </div>
+
+                <div class="item">
+                    <label for="altura" required>Altura</label>
+                    <input class="input" type="text" disabled value="1,58">
+                </div>
+
+                <div class="item">
+                    <label for="senha" required>Senha Atual</label>
+                    <input class="input" type="password" disabled>
+                </div>
+
+                <div class="item">
+                    <label for="senha" required>Nova senha</label>
+                    <input class="input" type="password" disabled>
+                </div>
+
+                <div class="item">
+                    <label for="senha" required>Confirme a nova senha</label>
+                    <input class="input" type="password" disabled>
+                </div>
+
+                <div class="button">
+
+                    <button class="primary" id="editarPerfil" onclick="editar()">Editar</button>
+                    <button class="none" id="salvarPerfil" onclick="salvar()">Salvar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function editar() {
+        let inputs = document.getElementsByClassName("input");
+        let btnEditar = document.getElementById("editarPerfil");
+        let btnSalvar = document.getElementById("salvarPerfil");
+
+        console.log(inputs)
+
+        for (let i = 0; i < inputs.length; i++) {
+            const el = inputs[i];
+            el.disabled = false;
+        }
+
+        dataNasc.nextSibling = "date"
+
+        btnEditar.classList.add("none");
+        btnSalvar.classList.remove("none");
+        btnSalvar.classList.add("primary");
+
+    }
+
+    function salvar() {
+        let inputs = document.getElementsByClassName("input");
+        let btnEditar = document.getElementById("editarPerfil");
+        let btnSalvar = document.getElementById("salvarPerfil");
+
+        for (let i = 0; i < inputs.length; i++) {
+            const el = inputs[i];
+            el.disabled = true;
+        }
+
+        btnSalvar.classList.add("none");
+        btnEditar.classList.remove("none");
+        btnEditar.classList.add("primary");
+
+    }
+</script>
