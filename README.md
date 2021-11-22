@@ -4,8 +4,6 @@ Health Track is a project currently under development and being implemented in J
 
 It's an academic project for Systems Analysis and Development graduation course, at FIAP college, which allows the student to develop all the processes of building a system, from requirements analysis, database modeling, building prototypes, preparation of documentation, application implementation, testing and deployment.
 
-| Directory                                                    |                         Description                          |
-| ------------------------------------------------------------ | :----------------------------------------------------------: |
-| [modeling](https://github.com/mmportella/health-track/tree/master/modeling) |  Data model, UML diagrams and other project documentation.   |
-| [site](https://github.com/mmportella/health-track/tree/master/site) | Project website, developed with HTML5, CSS, JS and Bootstrap. |
-| [src](https://github.com/mmportella/health-track/tree/master/src) |                    Java sources (.java).                     |
+This project uses Java 11 and Tomcat 9 (MVC with JSP and Java servlets).
+
+HTML Layout Credits: Aline Soares (https://github.com/alinedmsoares/health-track)
