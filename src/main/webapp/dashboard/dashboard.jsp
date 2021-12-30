@@ -39,6 +39,9 @@
                 <li>
                     <a href="atividade">Atividades</a>
                 </li>
+                <li>
+                    <a href="login">Sair</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -60,7 +63,6 @@
                 <a href="atividade">Atividades</a>
             </li>
         </ul>
-
         <button><a href="login">Sair</a></button>
     </div>
 
@@ -73,7 +75,8 @@
 
         </div>
 
-        <div class="foto" onclick="perfil()"></div>
+        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/${idUser}.jpeg');" onclick="perfil()">
+        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/1.jpeg');"></div></div>
 
     </div>
 
@@ -160,9 +163,9 @@
 <script type="text/javascript">
 const chLine = document.getElementById("chLine");
 const chartDataWeight = {
-    labels: ["${data0}", "${data1}", "${data2}", "${data3}", "${data4}", "${data5}", "${data6}"],
+    labels: ["${data6}", "${data5}", "${data4}", "${data3}", "${data2}", "${data1}", "${data0}"],
     datasets: [{
-        data: [${peso0}, ${peso1}, ${peso2}, ${peso3}, ${peso4}, ${peso5}, ${peso6}],
+        data: [${peso6}, ${peso5}, ${peso4}, ${peso3}, ${peso2}, ${peso1}, ${peso0}],
         backgroundColor: '#a8caff',
         borderColor: '#007bff',
         borderWidth: 4,
@@ -193,7 +196,7 @@ if (chLine) {
 
 <script type="text/javascript">
 function perfil() {
-    window.location.href = "../perfil/perfil.html";
+    window.location.href = "${pageContext.request.contextPath}/perfil";
 }
 </script>
 

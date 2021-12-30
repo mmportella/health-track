@@ -75,7 +75,8 @@
 
             </div>
 
-            <div class="foto" onclick="perfil()"></div>
+            <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/${idUser}.jpeg');" onclick="perfil()">
+        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/1.jpeg');"></div></div>
 
         </div>
 
@@ -110,6 +111,6 @@
 
 <script>
     function perfil() {
-        window.location.href = "${pageContext.request.contextPath}/perfil/perfil.html";
+        window.location.href = "${pageContext.request.contextPath}/perfil";
     }
 </script>

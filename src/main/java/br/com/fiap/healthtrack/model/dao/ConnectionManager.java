@@ -20,8 +20,8 @@ public class ConnectionManager {
 	public Connection getConnection() {
 		Connection connection = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL", "RM87099", "220994");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			connection = DriverManager.getConnection("jdbc:sqlserver://healthtrack.database.windows.net:1433;database=ht-database;user=marcelo@healthtrack;password=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
 			connection.setAutoCommit(false);
 		} catch (Exception e) {
 			e.printStackTrace();

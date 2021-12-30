@@ -116,7 +116,7 @@ public class AtividadeDAO {
 		Connection conexao = ConnectionManager.getInstance().getConnection();
 		try {
 			PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_ATIVIDADE (ID_ATIVIDADE, DT_ATIVIDADE, CATEGORIA, KCAL, DESCRICAO, USUARIO_ID_USUARIO) "
-															+ "VALUES (SEQ_ATIVIDADE.nextval, ?, ?, ?, ?, ?)");
+															+ "VALUES (NEXT VALUE FOR SEQ_ATIVIDADE, ?, ?, ?, ?, ?)");
 			String dataAtividade = atividade.getDataAtividade() + ":00";
 			dataAtividade = dataAtividade.replace('T', ' ');
 			stmt.setTimestamp(1, java.sql.Timestamp.valueOf(dataAtividade));

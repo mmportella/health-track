@@ -116,7 +116,7 @@ public class AlimentoDAO {
 		Connection conexao = ConnectionManager.getInstance().getConnection();
 		try {
 			PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_ALIMENTO (ID_ALIMENTO, DT_ALIMENTO, CATEGORIA, KCAL, DESCRICAO, USUARIO_ID_USUARIO) "
-															+ "VALUES (SEQ_ALIMENTO.nextval, ?, ?, ?, ?, ?)");
+															+ "VALUES (NEXT VALUE FOR SEQ_ALIMENTO, ?, ?, ?, ?, ?)");
 			String dataAlimento = alimento.getDataAlimento() + ":00";
 			dataAlimento = dataAlimento.replace('T', ' ');
 			stmt.setTimestamp(1, java.sql.Timestamp.valueOf(dataAlimento));

@@ -103,7 +103,7 @@ public class PesoDAO {
 		List<Peso> listaPeso = new ArrayList<Peso>();
 		try {
 			Connection conexao = ConnectionManager.getInstance().getConnection();
-			PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM T_PESO WHERE USUARIO_ID_USUARIO = ? ORDER BY DT_PESAGEM ASC");
+			PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM T_PESO WHERE USUARIO_ID_USUARIO = ? ORDER BY DT_PESAGEM DESC");
 			stmt.setLong(1, id);
 			ResultSet rs = stmt.executeQuery();
 			int c = 0;
@@ -135,7 +135,7 @@ public class PesoDAO {
 		Connection conexao = ConnectionManager.getInstance().getConnection();
 		try {
 			PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_PESO (ID_PESO, PESO, DT_PESAGEM, USUARIO_ID_USUARIO) "
-															+ "VALUES (SEQ_PESO.nextval, ?, ?, ?)");
+															+ "VALUES (NEXT VALUE FOR SEQ_PESO, ?, ?, ?)");
 			stmt.setFloat(1, peso.getPeso());
 			stmt.setDate(2, java.sql.Date.valueOf(peso.getDataPeso()));
 			stmt.setLong(3, id);

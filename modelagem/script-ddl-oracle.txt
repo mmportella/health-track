@@ -1,0 +1,79 @@
+CREATE TABLE t_alimento (
+    id_alimento        NUMBER(10) NOT NULL,
+    dt_alimento        TIMESTAMP(0),
+    categoria          VARCHAR2(30),
+    kcal               NUMBER(4),
+    descricao          VARCHAR2(30),
+    usuario_id_usuario NUMBER(9) NOT NULL
+);
+
+ALTER TABLE t_alimento ADD CONSTRAINT alimento_pk PRIMARY KEY ( id_alimento );
+
+CREATE TABLE t_atividade (
+    id_atividade       NUMBER(10) NOT NULL,
+    dt_atividade       TIMESTAMP(0),
+    categoria          VARCHAR2(20),
+    kcal               NUMBER(4),
+    descricao          VARCHAR2(20),
+    usuario_id_usuario NUMBER(9) NOT NULL
+);
+
+ALTER TABLE t_atividade ADD CONSTRAINT atividade_pk PRIMARY KEY ( id_atividade );
+
+CREATE TABLE t_peso (
+    id_peso            NUMBER(10) NOT NULL,
+    peso               NUMBER(4, 1),
+    dt_pesagem         DATE,
+    usuario_id_usuario NUMBER(9) NOT NULL
+);
+
+ALTER TABLE t_peso ADD CONSTRAINT peso_pk PRIMARY KEY ( id_peso );
+
+CREATE TABLE t_pressao (
+    id_pressao         NUMBER(10) NOT NULL,
+    pressao_sistolica  NUMBER(3),
+    pressao_diastolica NUMBER(3),
+    dt_medicao         DATE,
+    usuario_id_usuario NUMBER(9) NOT NULL
+);
+
+ALTER TABLE t_pressao ADD CONSTRAINT pressao_pk PRIMARY KEY ( id_pressao );
+
+CREATE TABLE t_usuario (
+    id_usuario    NUMBER(9) NOT NULL,
+    nome_usuario  VARCHAR2(20),
+    dt_nascimento DATE,
+    genero        VARCHAR2(1),
+    altura        NUMBER(3),
+    email         VARCHAR2(60),
+    senha         VARCHAR2(30)
+);
+
+ALTER TABLE t_usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( id_usuario );
+
+ALTER TABLE t_alimento
+    ADD CONSTRAINT alimento_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_atividade
+    ADD CONSTRAINT atividade_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_peso
+    ADD CONSTRAINT peso_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_pressao
+    ADD CONSTRAINT pressao_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+
+CREATE SEQUENCE  "RM87099"."SEQ_USUARIO"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+CREATE SEQUENCE  "RM87099"."SEQ_PRESSAO"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 19 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+CREATE SEQUENCE  "RM87099"."SEQ_PESO"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 29 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+CREATE SEQUENCE  "RM87099"."SEQ_ATIVIDADE"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 10 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+CREATE SEQUENCE  "RM87099"."SEQ_ALIMENTO"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 14 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;

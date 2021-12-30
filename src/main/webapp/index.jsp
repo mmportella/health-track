@@ -33,7 +33,7 @@
 
                     <div class="title">Login</div>
 
-                    <span class="text-light">Não possui uma conta? <a href="cadastro" class="link">Cadastre-se!</a></span>
+                    <span class="text-light">Não possui uma conta? <a href="${pageContext.request.contextPath}/cadastro" class="link">Cadastre-se!</a></span>
 
                 </div>
 

@@ -1,0 +1,80 @@
+CREATE TABLE t_alimento (
+    id_alimento        BIGINT NOT NULL,
+    dt_alimento        DATETIME,
+    categoria          VARCHAR(30),
+    kcal               SMALLINT,
+    descricao          VARCHAR(30),
+    usuario_id_usuario BIGINT NOT NULL
+);
+
+ALTER TABLE t_alimento ADD CONSTRAINT alimento_pk PRIMARY KEY ( id_alimento );
+
+CREATE TABLE t_atividade (
+    id_atividade       BIGINT NOT NULL,
+    dt_atividade       DATETIME,
+    categoria          VARCHAR(20),
+    kcal               SMALLINT,
+    descricao          VARCHAR(20),
+    usuario_id_usuario BIGINT NOT NULL
+);
+
+ALTER TABLE t_atividade ADD CONSTRAINT atividade_pk PRIMARY KEY ( id_atividade );
+
+CREATE TABLE t_peso (
+    id_peso            BIGINT NOT NULL,
+    peso               NUMERIC(4, 1),
+    dt_pesagem         DATE,
+    usuario_id_usuario BIGINT NOT NULL
+);
+
+ALTER TABLE t_peso ADD CONSTRAINT peso_pk PRIMARY KEY ( id_peso );
+
+CREATE TABLE t_pressao (
+    id_pressao         BIGINT NOT NULL,
+    pressao_sistolica  SMALLINT,
+    pressao_diastolica SMALLINT,
+    dt_medicao         DATE,
+    usuario_id_usuario BIGINT NOT NULL
+);
+
+ALTER TABLE t_pressao ADD CONSTRAINT pressao_pk PRIMARY KEY ( id_pressao );
+
+CREATE TABLE t_usuario (
+    id_usuario    BIGINT NOT NULL,
+    nome_usuario  VARCHAR(20),
+    dt_nascimento DATE,
+    genero        VARCHAR(1),
+    altura        SMALLINT,
+    email         VARCHAR(60),
+    senha         VARCHAR(30)
+);
+
+ALTER TABLE t_usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( id_usuario );
+
+ALTER TABLE t_alimento
+    ADD CONSTRAINT alimento_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_atividade
+    ADD CONSTRAINT atividade_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_peso
+    ADD CONSTRAINT peso_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+ALTER TABLE t_pressao
+    ADD CONSTRAINT pressao_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES t_usuario ( id_usuario );
+
+
+CREATE SEQUENCE SEQ_USUARIO START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999 NO CYCLE NO CACHE;
+
+CREATE SEQUENCE SEQ_PRESSAO START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999 NO CYCLE NO CACHE;
+
+CREATE SEQUENCE SEQ_PESO START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999 NO CYCLE NO CACHE;
+
+CREATE SEQUENCE SEQ_ATIVIDADE START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999 NO CYCLE NO CACHE;
+
+CREATE SEQUENCE SEQ_ALIMENTO START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999 NO CYCLE NO CACHE;
+

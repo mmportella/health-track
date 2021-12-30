@@ -74,7 +74,7 @@ public class UsuarioDAO {
 		if (id == 0) {
 			Connection conexao = ConnectionManager.getInstance().getConnection();
 			try {
-				PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_USUARIO VALUES (SEQ_USUARIO.nextval, ?, ?, ?, ?, ?, ?)");
+				PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_USUARIO VALUES (NEXT VALUE FOR SEQ_USUARIO, ?, ?, ?, ?, ?, ?)");
 				stmt.setString(1, usuario.getNomeUsuario());
 				stmt.setDate(2, java.sql.Date.valueOf(usuario.getDataNascimento()));
 				String genero = " ";
@@ -112,7 +112,13 @@ public class UsuarioDAO {
 				PreparedStatement stmt = conexao.prepareStatement("UPDATE T_USUARIO SET NOME_USUARIO = ?, DT_NASCIMENTO = ?, GENERO = ?, ALTURA = ?, EMAIL = ?, SENHA = ? WHERE ID_USUARIO = ?");
 				stmt.setString(1, usuario.getNomeUsuario());
 				stmt.setDate(2, java.sql.Date.valueOf(usuario.getDataNascimento()));
-				stmt.setString(3, usuario.getGenero());
+				String genero = " ";
+				if (usuario.getGenero().equals("Masculino")) {
+					genero = "M";
+				} else {
+					genero = "F";
+				}
+				stmt.setString(3, genero);
 				stmt.setShort(4, usuario.getAltura());
 				stmt.setString(5, usuario.getEmail());
 				stmt.setString(6, usuario.getSenha());

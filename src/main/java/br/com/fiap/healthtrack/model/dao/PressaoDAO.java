@@ -126,7 +126,7 @@ public class PressaoDAO {
 		Connection conexao = ConnectionManager.getInstance().getConnection();
 		try {
 			PreparedStatement stmt = conexao.prepareStatement("INSERT INTO T_PRESSAO (ID_PRESSAO, PRESSAO_SISTOLICA, PRESSAO_DIASTOLICA, DT_MEDICAO, USUARIO_ID_USUARIO) "
-															+ "VALUES (SEQ_PRESSAO.nextval, ?, ?, ?, ?)");
+															+ "VALUES (NEXT VALUE FOR SEQ_PRESSAO, ?, ?, ?, ?)");
 			stmt.setShort(1, pressao.getPressaoSistolica());
 			stmt.setShort(2, pressao.getPressaoDiastolica());
 			stmt.setDate(3, java.sql.Date.valueOf(pressao.getDataPressao()));

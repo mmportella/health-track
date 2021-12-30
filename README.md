@@ -6,4 +6,7 @@ It's an academic project for Systems Analysis and Development graduation course,
 
 This project uses Java 11 and Tomcat 9 (MVC with JSP and Java servlets).
 
+Now I'm also using this project to study some Azure cloud services, like Azure App Services, Azure SQL Database and Azure Blob Storage.
+Here is the deploy: https://healthtrack.azurewebsites.net/
+
 HTML Layout Credits: Aline Soares (https://github.com/alinedmsoares/health-track)

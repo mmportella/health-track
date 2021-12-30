@@ -51,6 +51,7 @@ public class DashboardController extends HttpServlet {
 		float alt = usuario.getAltura() / 100.0f;
 		String altura = String.format("%.2f", alt);
 		
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("nomeUsuario", nomeUsuario);
 		request.setAttribute("idade", idade);
 		request.setAttribute("hoje", hoje);
@@ -78,15 +79,15 @@ public class DashboardController extends HttpServlet {
 		short sistolica = daopressao.getLastSistolica(idUsuario);
 		short diastolica = daopressao.getLastDiastolica(idUsuario);
 		
-		String pressaoStatus = "Press√£o Normal";
+		String pressaoStatus = "Press„o Normal";
 		if (sistolica >= 140 || diastolica >= 90) {
-			pressaoStatus = "Press√£o Alta";
+			pressaoStatus = "Press„o Alta";
 		} else if (sistolica < 90 & sistolica > 0 || diastolica < 60 & diastolica > 0) {
-			pressaoStatus = "Press√£o Baixa";
+			pressaoStatus = "Press„o Baixa";
 		} else if(sistolica == 0 | diastolica == 0) {
-			pressaoStatus = "Sem registro de press√£o";
+			pressaoStatus = "Sem registro de press„o";
 		} else {
-			pressaoStatus = "Press√£o Normal";
+			pressaoStatus = "Press„o Normal";
 		}
 		
 		request.setAttribute("sistolica", sistolica);
