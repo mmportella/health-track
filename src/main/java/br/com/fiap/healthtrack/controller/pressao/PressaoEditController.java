@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.fiap.healthtrack.model.dao.PressaoDAO;
 
@@ -18,7 +19,9 @@ public class PressaoEditController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response, long id) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		String idUser = (String) session.getAttribute("idUsuario");
+		request.setAttribute("idUser", idUser);
 		PressaoDAO dao = new PressaoDAO();
 		request.setAttribute("idPressao", id);
 		request.setAttribute("data", dao.getById(id).getDataPressao());

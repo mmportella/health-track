@@ -1,6 +1,6 @@
 package br.com.fiap.healthtrack.controller.perfil;
 
-import java.io.FileOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import com.azure.storage.blob.BlobContainerClient;
+import com.azure.storage.blob.BlobContainerClientBuilder;
+import com.azure.storage.blob.specialized.BlockBlobClient;
 
 @MultipartConfig
 @WebServlet("/perfil/foto")
@@ -29,18 +33,27 @@ public class FotoController extends HttpServlet {
 		
 		try {
 			
-		Part file = request.getPart("imagem");
-		String fileName = idUser + ".jpeg";
+			String fileName = idUser + ".jpeg";
 		
-		String uploadPath = "C:/Users/m.portella.filho/Desktop/health-track/src/main/webapp/assets/images/user/" + fileName;
+			BlobContainerClient blobContainerClient = new BlobContainerClientBuilder()
+			    .endpoint("https://healthtrackstorageacc.blob.core.windows.net/")
+			    .sasToken("")
+			    .containerName("perfil")
+			    .buildClient();
+			BlockBlobClient blockBlobClient = blobContainerClient.getBlobClient(fileName).getBlockBlobClient();
 		
-		FileOutputStream fos = new FileOutputStream(uploadPath);
-		InputStream is = file.getInputStream();
+			Part file = request.getPart("imagem");
+			InputStream is = file.getInputStream();
+			byte[] dataSample = new byte[is.available()];
+			is.read(dataSample);
 		
-		byte[] data = new byte[is.available()];
-		is.read(data);
-		fos.write(data);
-		fos.close();
+			try (ByteArrayInputStream dataStream = new ByteArrayInputStream(dataSample)) {
+			
+				blockBlobClient.upload(dataStream, dataSample.length, true);
+		    
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();

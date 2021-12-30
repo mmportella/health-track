@@ -31,6 +31,7 @@ public class AlimentoListController extends HttpServlet {
 		AlimentoDAO dao = new AlimentoDAO();
 		List<Alimento> listaAlimento = dao.getAll(idUsuario);
 		
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("listaAlimento", listaAlimento);
 		request.getRequestDispatcher("alimentos/alimentos.jsp").forward(request, response);
 		

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.fiap.healthtrack.model.dao.AlimentoDAO;
 
@@ -19,6 +20,9 @@ public class AlimentoEditController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response, long id) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String idUser = (String) session.getAttribute("idUsuario");
+		request.setAttribute("idUser", idUser);
 		AlimentoDAO dao = new AlimentoDAO();
 		request.setAttribute("idAlimento", id);
 		request.setAttribute("kcal", dao.getById(id).getKcal());

@@ -21,6 +21,9 @@ public class AtividadeAddController extends HttpServlet {
 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String idUser = (String) session.getAttribute("idUsuario");
+		request.setAttribute("idUser", idUser);
 		request.getRequestDispatcher("../atividades/nova-atividade.jsp").forward(request, response);
 	}
 

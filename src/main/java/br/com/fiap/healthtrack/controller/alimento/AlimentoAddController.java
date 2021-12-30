@@ -21,6 +21,9 @@ public class AlimentoAddController extends HttpServlet {
 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String idUser = (String) session.getAttribute("idUsuario");
+		request.setAttribute("idUser", idUser);
 		request.getRequestDispatcher("../alimentos/novo-alimento.jsp").forward(request, response);
 	}
 

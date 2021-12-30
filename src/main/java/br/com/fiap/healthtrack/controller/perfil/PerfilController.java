@@ -29,6 +29,7 @@ public class PerfilController extends HttpServlet {
 		UsuarioDAO dao = new UsuarioDAO();
 		Usuario usuario = dao.get(idUsuario);
 		
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("nome", usuario.getNomeUsuario());
 		request.setAttribute("data", usuario.getDataNascimento());
 		request.setAttribute("email", usuario.getEmail());

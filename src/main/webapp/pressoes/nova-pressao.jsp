@@ -83,8 +83,10 @@
 
             </div>
 
-            <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/${idUser}.jpeg');" onclick="perfil()">
-        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/1.jpeg');"></div></div>
+        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/user.jpeg');">
+        	<div class="foto" style="background-image: url('https://healthtrackstorageacc.blob.core.windows.net/perfil/${idUser}.jpeg');" onclick="perfil()">
+        	</div>
+        </div>
 
         </div>
 

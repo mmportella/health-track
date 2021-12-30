@@ -30,7 +30,8 @@ public class PesoListController extends HttpServlet {
 		
 		PesoDAO dao = new PesoDAO();
 		List<Peso> listaPeso = dao.getAll(idUsuario);
-		
+
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("listaPeso", listaPeso);
 		request.getRequestDispatcher("pesos/pesos.jsp").forward(request, response);
 		

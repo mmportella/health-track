@@ -30,7 +30,8 @@ public class PressaoListController extends HttpServlet {
 		
 		PressaoDAO dao = new PressaoDAO();
 		List<Pressao> listaPressao = dao.getAll(idUsuario);
-		
+
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("listaPressao", listaPressao);
 		request.getRequestDispatcher("pressoes/pressoes.jsp").forward(request, response);
 		

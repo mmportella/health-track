@@ -31,6 +31,7 @@ public class AtividadeListController extends HttpServlet {
 		AtividadeDAO dao = new AtividadeDAO();
 		List <Atividade> listaAtividade = dao.getAll(idUsuario);
 		
+		request.setAttribute("idUser", idUser);
 		request.setAttribute("listaAtividade", listaAtividade);
 		request.getRequestDispatcher("atividades/atividades.jsp").forward(request, response);
 		

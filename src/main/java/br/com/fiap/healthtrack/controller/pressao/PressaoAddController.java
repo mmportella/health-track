@@ -21,6 +21,9 @@ public class PressaoAddController extends HttpServlet {
 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String idUser = (String) session.getAttribute("idUsuario");
+		request.setAttribute("idUser", idUser);
 		request.getRequestDispatcher("../pressoes/nova-pressao.jsp").forward(request, response);
 	}
 

@@ -67,8 +67,10 @@
 
         <div class="header">
 
-            <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/${idUser}.jpeg');" onclick="perfil()">
-        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/1.jpeg');"></div></div>
+        <div class="foto" style="background-image: url('${pageContext.request.contextPath}/assets/images/user/user.jpeg');">
+        	<div class="foto" style="background-image: url('https://healthtrackstorageacc.blob.core.windows.net/perfil/${idUser}.jpeg');" onclick="perfil()">
+        	</div>
+        </div>
         
         <div style="margin:20px; padding:5px; font-family: WorkSans; font-weight: bolder; font-size: 1em;">
         	
@@ -148,10 +150,6 @@
 
     </div>
 
-</body>
-
-</html>
-
 <script>
     function editar() {
         let inputs = document.getElementsByClassName("input");
@@ -180,6 +178,11 @@
     }
 
     function salvar() {
+
     	document.getElementById("formulario").submit();
     }
 </script>
+
+</body>
+
+</html>
